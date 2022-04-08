@@ -3,18 +3,14 @@
  */
 int main(void)
 {
-	char *string = NULL, *s = NULL, *ret = NULL;
-	char **token = NULL;
+	char *string = NULL;
 	size_t input = 0, i = -1, buffer = 0;
-	int flag = 0;
-	struct stat buf;
+	int flag = 0, aux = 0;
 
 	while (flag == 0)
 	{
 		if (isatty(STDIN_FILENO) == 1)
-		{
 			write(STDOUT_FILENO, "$ ", 2);
-		}
 		input = getline(&string, &buffer, stdin);
 		if (input == i)
 		{
@@ -24,47 +20,12 @@ int main(void)
 			return (0);
 		}
 		if (characters(string) == -1)
-		{
 			continue;
-		}
 		terminated(string, "exit\n");
-		env(string, "env\n");
-		s = string;
-		if (s[0] != '\n')
-		{
-			token = tokenizer(s, " \n");
-			if (string[0] == '/')
-			{
-				if (token[0][1] >= 'a' && token [0][1] <= 'z')
-				{
-					if (stat(token[0], &buf) == 0)
-					{
-						execute(token[0], token);
-						free(token);
-					}
-					else
-					{
-						perror(token[0]);
-						free(string);
-						free(token[0]);
-					}
-				}
-			}
-			else
-			{
-				ret = _which(token);
-				if (ret == NULL)
-				{
-					perror(token[0]);
-					free(token);
-					free(ret);
-					continue;
-				}
-				execute(ret, token);
-				free(token);
-				free(ret);
-			}
-		}
+		/*env(string, "env\n");*/
+		aux = aux_exe(string);
+		if (aux == 0)
+			continue;
 	}
 	return (0);
 }
