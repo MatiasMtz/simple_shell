@@ -24,6 +24,6 @@ char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
-/*void env(char *str, char *str1);*/
 int aux_exe(char *string);
+void tabs(char *str);
 #endif

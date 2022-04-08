@@ -19,3 +19,21 @@ int characters(char *str)
 	}
 	return (flag);
 }
+
+/**
+ */
+void tabs(char *str)
+{
+	int count = 0;
+
+	while (str[count] != '\0')
+	{
+		if (str[count] == 9)
+		{
+			str[count] = ' ';
+			count++;
+		}
+		else
+			count++;
+	}
+}

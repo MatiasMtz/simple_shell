@@ -22,7 +22,6 @@ int main(void)
 		if (characters(string) == -1)
 			continue;
 		terminated(string, "exit\n");
-		/*env(string, "env\n");*/
 		aux = aux_exe(string);
 		if (aux == 0)
 			continue;
