@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <time.h>
 #include <errno.h>
+#include <signal.h>
 
 extern char **environ;
 int wc(char *string, const char *delim);
@@ -26,4 +27,5 @@ char *_strcat(char *dest, char *src);
 int _strlen(char *s);
 int aux_exe(char *string);
 void tabs(char *str);
+void ctrl_handler(__attribute__((unused))int signum);
 #endif

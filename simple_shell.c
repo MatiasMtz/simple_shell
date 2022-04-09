@@ -9,6 +9,7 @@ int main(void)
 
 	while (flag == 0)
 	{
+		signal(SIGINT, ctrl_handler);
 		if (isatty(STDIN_FILENO) == 1)
 			write(STDOUT_FILENO, "$ ", 2);
 		input = getline(&string, &buffer, stdin);
