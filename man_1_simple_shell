@@ -1,0 +1,50 @@
+NAME
+
+		hsh - Simple shell, command language interpreter.
+
+SYNOPSIS
+
+		Non-interactive mode:
+			echo [command] [argument] | ./hsh
+
+		Interactive mode:
+			./hsh
+
+DESCRIPTION
+
+		hsh is a command language interpreter that shall execute commands read
+		from a command line string, the standard input, or a specified file.
+
+OPERANDS
+
+		argument:
+			The positional parametersshall be set to arguments.
+
+		command: 
+			The pathname of a file containing commands. If the
+    		pathname contains one or more <slash> characters, the
+    		implementation attempts to read that file; the file
+    		need not be executable. If the pathname does not
+    		contain a <slash> character:
+
+    			*  The implementation shall attempt to read that file
+    			from the current working directory; the file need
+    			not be executable.
+
+    			*  If the file is not in the current working
+    			directory, the implementation may perform a search
+    			for an executable file using the value of PATH.
+
+BUILTINS
+
+		env:
+			Print the enviroment variables.
+
+		exit:
+			Exit the program.
+
+
+AUTHORS
+
+	Axel Bouvier - axel.bouvier@holbertonschool.com
+	Matias Martinez - matias.martinez@holbertonschool.com
