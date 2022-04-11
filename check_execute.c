@@ -7,7 +7,7 @@
 int check_and_execute(char *string)
 {
 	struct stat buf;
-	int check = 0;
+	int check = 0, check2 = 0;
 	char *s = NULL, *ret = NULL;
 	char **token = NULL;
 
@@ -18,6 +18,9 @@ int check_and_execute(char *string)
 		token = tokenizer(s, " \n");
 		check = check_dot_slash(token);
 		if (check == 0)
+			return (0);
+		check2 = check_ddot_slash(token);
+		if (check2 == 0)
 			return (0);
 		if (token[0][0] == '/')
 		{
@@ -71,3 +74,26 @@ int check_dot_slash(char **token)
 	}
 	return (-1);
 }
+
+int check_ddot_slash(char **token)
+{
+	int parent = 0;
+
+	if (token[0][0] == '.' && token[0][1] == '.' && token[0][2])
+	{
+		if (token[0][3] >= 'a' && token[0][3] <= 'z')
+		{
+			parent = parent_which(token);
+			if (parent == 0)
+			{
+				execute(token[0], token);
+				free(token);
+			}
+			else
+				perror(token[0]);
+		}
+		return (0);
+	}
+	return (-1);
+}
+

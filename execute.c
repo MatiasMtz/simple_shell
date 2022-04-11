@@ -98,3 +98,37 @@ int cwd_which(char **tknstring)
 	free(cwd);
 	return (-1);
 }
+
+int parent_which(char **token)
+{
+	struct stat buf;
+	char *buffer = NULL, *strconcat = NULL, *cwd = NULL, *parent = NULL, *tkn = NULL, *strconcat2 = NULL;
+	int aux = 0;
+
+	cwd = getcwd(buffer, 1024);
+	parent = dirname(cwd);
+	tkn = &token[0][3];
+	if (tkn != NULL)
+	{
+		strconcat = _strcat(parent, "/");
+		strconcat2 = _strcat(strconcat, tkn);
+		aux = stat(strconcat, &buf);
+		if (aux == 0)
+		{
+			free(strconcat);
+			free(strconcat2);
+			free(cwd);
+			return (0);
+		}
+		else
+		{
+			free(strconcat);
+			free(strconcat2);
+			free(cwd);
+			return (-1);
+		}
+	}
+	free(cwd);
+	free(strconcat);
+	return (-1);
+}

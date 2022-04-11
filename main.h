@@ -11,6 +11,7 @@
 #include <time.h>
 #include <errno.h>
 #include <signal.h>
+#include <libgen.h>
 
 extern char **environ;
 int wc(char *string, const char *delim);
@@ -31,4 +32,6 @@ void ctrl_handler(__attribute__((unused))int signum);
 int cwd_which(char **tknstring);
 int _env(char *str);
 int check_dot_slash(char **token);
+int check_ddot_slash(char **token);
+int parent_which(char **token);
 #endif
