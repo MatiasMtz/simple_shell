@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * main - Function main.
+ * main - Simple shell.
  * Return: 0;
  */
 int main(void)
@@ -27,7 +27,7 @@ int main(void)
 		terminated(string, "exit\n");
 		if (_env(string) == 0)
 		{
-			aux = aux_exe(string);
+			aux = check_and_execute(string);
 			if (aux == 0)
 				continue;
 		}

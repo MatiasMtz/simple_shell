@@ -25,9 +25,10 @@ char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
-int aux_exe(char *string);
+int check_and_execute(char *string);
 void tabs(char *str);
 void ctrl_handler(__attribute__((unused))int signum);
 int cwd_which(char **tknstring);
 int _env(char *str);
+int check_dot_slash(char **token);
 #endif
