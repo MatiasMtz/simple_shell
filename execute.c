@@ -8,6 +8,7 @@
 int execute(char *str, char **argv)
 {
 	pid_t pid;
+	int status;
 
 	pid = fork();
 	if (pid == -1)
@@ -23,7 +24,7 @@ int execute(char *str, char **argv)
 	}
 	else
 	{
-		wait(NULL);
+		wait(&status);
 	}
 	return (0);
 }
