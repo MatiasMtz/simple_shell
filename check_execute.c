@@ -7,7 +7,7 @@
 int check_and_execute(char *string)
 {
 	struct stat buf;
-	int check = 0, check2 = 0;
+	int check = 0;
 	char *s = NULL, *ret = NULL;
 	char **token = NULL;
 
@@ -16,11 +16,8 @@ int check_and_execute(char *string)
 	if (s[0] != '\n')
 	{
 		token = tokenizer(s, " \n");
-		check = check_dot_slash(token);
+		check = file_check(token);
 		if (check == 0)
-			return (0);
-		check2 = check_ddot_slash(token);
-		if (check2 == 0)
 			return (0);
 		if (token[0][0] == '/')
 		{
@@ -51,49 +48,65 @@ int check_and_execute(char *string)
 }
 
 /**
- *
  */
-int check_dot_slash(char **token)
+int file_check(char **token)
 {
-	int cwd = 0;
+	struct stat buf;
+	int count = 0, aux = 0;
 
-	if (token[0][0] == '.' && token[0][1] == '/')
+	while (token[0][count] != '\0')
+		count++;
+	if (token[0][0] == '.' && token[0][count] != '/')
 	{
-		if (token[0][2] >= 'a' && token[0][2] <= 'z')
+		aux = stat(token[0], &buf);
+		if (aux == 0)
 		{
-			cwd = cwd_which(token);
-			if (cwd == 0)
-			{
-				execute(token[0], token);
-				free(token);
-			}
-			else
-				perror(token[0]);
+			execute(token[0], token);
+			free(token);
+			return (0);
 		}
-		return (0);
+		else
+		{
+			perror(token[0]);
+			return (-1);
+		}
 	}
 	return (-1);
 }
 
-int check_ddot_slash(char **token)
+/**
+ * _which - Looks if a file exist
+ *  them with the $PATH looking for a match.
+ * @tknstring: Array of arguments.
+ * Return: Return the complete path of the executables.
+ */
+char *_which(char **tknstring)
 {
-	int parent = 0;
+	struct stat buf;
+	char *strconcat = NULL, *strconcat2 = NULL;
+	char **path = NULL;
+	int aux = 0, count = 0;
 
-	if (token[0][0] == '.' && token[0][1] == '.' && token[0][2])
+	path = _getenv("PATH");
+	while (path[count] != NULL)
 	{
-		if (token[0][3] >= 'a' && token[0][3] <= 'z')
+		strconcat = _strcat(path[count], "/");
+		strconcat2 = _strcat(strconcat, tknstring[0]);
+		free(strconcat);
+		aux = stat(strconcat2, &buf);
+		if (aux == 0)
 		{
-			parent = parent_which(token);
-			if (parent == 0)
-			{
-				execute(token[0], token);
-				free(token);
-			}
-			else
-				perror(token[0]);
+			free(path[0]);
+			free(path);
+			return (strconcat2);
 		}
-		return (0);
+		else
+		{
+			count++;
+		}
+		free(strconcat2);
 	}
-	return (-1);
+	free(path[0]);
+	free(path);
+	return (NULL);
 }
-

@@ -31,7 +31,6 @@ void tabs(char *str);
 void ctrl_handler(__attribute__((unused))int signum);
 int cwd_which(char **tknstring);
 int _env(char *str);
-int check_dot_slash(char **token);
-int check_ddot_slash(char **token);
+int file_check(char **token);
 int parent_which(char **token);
 #endif
