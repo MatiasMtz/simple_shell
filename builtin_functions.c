@@ -11,6 +11,8 @@ void terminated(char *str, char *str1)
 	aux = _strcmp(str, str1);
 	if (aux == 0)
 	{
+		if (isatty(STDIN_FILENO == 1))
+			write(STDOUT_FILENO, "\n", 1);
 		free(str);
 		exit(0);
 	}
