@@ -25,10 +25,12 @@ int main(void)
 		if (characters(string) == -1)
 			continue;
 		terminated(string, "exit\n");
-		_env();
-		aux = aux_exe(string);
-		if (aux == 0)
-			continue;
+		if (_env(string) == 0)
+		{
+			aux = aux_exe(string);
+			if (aux == 0)
+				continue;
+		}
 	}
 	return (0);
 }
