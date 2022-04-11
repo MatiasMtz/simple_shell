@@ -23,7 +23,7 @@ int _env(char *str)
 	int count = 0;
 	char *aux = _strdup(str);
 
-	if (strcmp(strtok(aux, " "), "env") == 0)
+	if (_strcmp(strtok(aux, " "), "env\n") == 0)
 	{
 		while (environ[count] != NULL)
 		{
