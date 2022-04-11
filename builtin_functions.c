@@ -24,7 +24,8 @@ void _env(void)
 
 	while (environ[count])
 	{
-		printf("%s\n", environ[count]);
+		write(1, environ[count], _strlen(environ[count]));
+		write(1, "\n", 1);
 		count++;
 		break;
 	}
