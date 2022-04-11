@@ -1,5 +1,7 @@
 #include "main.h"
 /**
+ * main - Function main.
+ * Return: 0;
  */
 int main(void)
 {
