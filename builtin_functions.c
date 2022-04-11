@@ -18,14 +18,22 @@ void terminated(char *str, char *str1)
 
 /**
  */
-void _env(void)
+int _env(char *str)
 {
 	int count = 0;
+	char *aux = _strdup(str);
 
-	while (environ[count] != NULL)
+	if (strcmp(strtok(aux, " "), "env") == 0)
 	{
-		count++;
-		printf("%s\n", environ[count]);
-		break;
+		while (environ[count] != NULL)
+		{
+			write(1, environ[count], _strlen(environ[count]));
+			write(1, "\n", 1);
+			count++;
+		}
+		free(aux);
+		return (1);
 	}
+	free(aux);
+	return (0);
 }
