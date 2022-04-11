@@ -21,6 +21,8 @@ int characters(char *str)
 }
 
 /**
+ * tabs - Function that changes tabs to spaces.
+ * @str: User input.
  */
 void tabs(char *str)
 {
