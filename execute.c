@@ -23,7 +23,6 @@ int execute(char *str, char **argv)
 			fflush(stdout);
 		}
 		execve(str, argv, environ);
-		perror(str);
 		exit(99);
 	}
 	else
