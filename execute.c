@@ -18,6 +18,7 @@ int execute(char *str, char **argv)
 	if (pid == 0)
 	{
 		execve(str, argv, environ);
+		perror(str);
 		exit(99);
 	}
 	else
