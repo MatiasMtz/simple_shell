@@ -7,7 +7,7 @@
 int check_and_execute(char *string)
 {
 	struct stat buf;
-	int check = 0;
+	int check = 0, aux = 0;
 	char *s = NULL, *ret = NULL;
 	char **token = NULL;
 
@@ -24,7 +24,9 @@ int check_and_execute(char *string)
 			if (token[0][1] >= 'a' && token[0][1] <= 'z')
 			{
 				if (stat(token[0], &buf) == 0)
-					execute(token[0], token), free(token);
+					aux = execute(token[0], token), free(token);
+						if (aux != 0)
+							return (aux);
 				else
 				{
 					perror(token[0]);
