@@ -22,11 +22,10 @@ void _env(void)
 {
 	int count = 0;
 
-	while (environ[count])
+	while (environ[count] != NULL)
 	{
-		write(1, environ[count], _strlen(environ[count]));
-		write(1, "\n", 1);
 		count++;
+		printf("%s\n", environ[count]);
 		break;
 	}
 }
