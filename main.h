@@ -28,4 +28,5 @@ int _strlen(char *s);
 int aux_exe(char *string);
 void tabs(char *str);
 void ctrl_handler(__attribute__((unused))int signum);
+void _env(void);
 #endif
