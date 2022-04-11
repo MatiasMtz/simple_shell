@@ -1,5 +1,8 @@
 #include "main.h"
 /**
+ * aux_exe - Function that complements the main.
+ * @string: User input.
+ * Return: 0.
  */
 int aux_exe(char *string)
 {
