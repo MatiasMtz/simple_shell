@@ -10,7 +10,6 @@ int execute(char *str, char **argv)
 	pid_t pid;
 	int status;
 
-	printf("NEW PROCESS\n");
 	pid = fork();
 	if (pid == -1)
 	{
@@ -76,15 +75,11 @@ int cwd_which(char **tknstring)
 	int aux = 0;
 
 	cwd = getcwd(buffer, 1024);
-	printf("CWD: %s\n", cwd);
 	tkn = &tknstring[0][1];
-	printf("TKN: %s\n", tkn);
 	if (tkn != NULL)
 	{
 		strconcat = _strcat(cwd, tkn);
-		printf("STRCONCAT: %s\n", strconcat);
 		aux = stat(strconcat, &buf);
-		printf("AUX: %d\n", aux);
 		if (aux == 0)
 		{
 			free(strconcat);
