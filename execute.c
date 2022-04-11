@@ -26,5 +26,5 @@ int execute(char *str, char **argv)
 	{
 		wait(&status);
 	}
-	return (0);
+	return (WEXITSTATUS(status));
 }
