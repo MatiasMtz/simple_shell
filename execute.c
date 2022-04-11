@@ -65,3 +65,36 @@ char *_which(char **tknstring)
 	free(path);
 	return (NULL);
 }
+
+/**
+ */
+int cwd_which(char **tknstring)
+{
+	struct stat buf;
+	char *buffer = NULL, *strconcat = NULL, *cwd = NULL, *tkn = NULL;
+	int aux = 0;
+
+	cwd = getcwd(buffer, 1024);
+	tkn = &tknstring[0][1];
+	if (tkn != NULL)
+	{
+		strconcat = _strcat(cwd, tkn);
+		aux = stat(strconcat, &buf);
+		if (aux == 0)
+		{
+			free(strconcat);
+			free(cwd);
+			return (0);
+		}
+		else
+		{
+			free(strconcat);
+			free(cwd);
+			free(tknstring);
+			return (-1);
+		}
+	}
+	free(strconcat);
+	free(cwd);
+	return (-1);
+}

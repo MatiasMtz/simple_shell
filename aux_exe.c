@@ -8,6 +8,7 @@ int aux_exe(char *string)
 {
 	struct stat buf;
 	char *s = NULL, *ret = NULL;
+	int cwd = 0;
 	char **token = NULL;
 
 	tabs(string);
@@ -16,8 +17,20 @@ int aux_exe(char *string)
 	{
 		token = tokenizer(s, " \n");
 		if (token[0][0] == '.' && token[0][1] == '/')
+		{
 			if (token[0][2] >= 'a' && token[0][2] <= 'z')
-				execute(token[0], token);
+			{
+				cwd = cwd_which(token);
+				if (cwd == 0)
+				{
+					execute(token[0], token);
+					free(token);
+				}
+				else
+					perror(token[0]);
+				return (0);
+			}
+		}
 		if (token[0][0] == '/')
 		{
 			if (token[0][1] >= 'a' && token[0][1] <= 'z')
