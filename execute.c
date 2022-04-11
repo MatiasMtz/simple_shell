@@ -13,16 +13,12 @@ int execute(char *str, char **argv)
 	if (pid == -1)
 	{
 		free(str);
-		perror("Child process could not be created\n");
+		perror(str);
 	}
-	if (pid >= 0)
+	if (pid == 0)
 	{
-		if (!fork())
-		{
-			printf("child created\n");
-			fflush(stdout);
-		}
-		execve(str, argv, environ);
+		if (execve(str, argv, environ) == -1)
+			perror(str);
 		exit(99);
 	}
 	else
