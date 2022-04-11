@@ -15,3 +15,17 @@ void terminated(char *str, char *str1)
 		exit(0);
 	}
 }
+
+/**
+ */
+void _env(void)
+{
+	int count = 0;
+
+	while (environ[count])
+	{
+		printf("%s\n", environ[count]);
+		count++;
+		break;
+	}
+}
