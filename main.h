@@ -11,7 +11,6 @@
 #include <time.h>
 #include <errno.h>
 #include <signal.h>
-#include <libgen.h>
 
 extern char **environ;
 int wc(char *string, const char *delim);
