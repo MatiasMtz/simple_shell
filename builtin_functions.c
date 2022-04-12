@@ -17,6 +17,9 @@ void terminated(char *str, char *str1)
 }
 
 /**
+ * _env - Function that print environ.
+ * @str: User input.
+ * Return: 0
  */
 int _env(char *str)
 {

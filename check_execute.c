@@ -48,6 +48,9 @@ int check_and_execute(char *string)
 }
 
 /**
+ * file_check - Check if the command exists.
+ * @token: First position of the array
+ * Return: 0 if successful or -1 if unsuccessful
  */
 int file_check(char **token)
 {
