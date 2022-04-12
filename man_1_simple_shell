@@ -20,7 +20,7 @@ OPERANDS
 		argument:
 			The positional parametersshall be set to arguments.
 
-		command: 
+		command:
 			The pathname of a file containing commands. If the
     		pathname contains one or more <slash> characters, the
     		implementation attempts to read that file; the file

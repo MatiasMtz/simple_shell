@@ -17,7 +17,7 @@ extern char **environ;
 int wc(char *string, const char *delim);
 char **tokenizer(char *string, const char *delim);
 char **_getenv(char *env);
-int characters(char *str);
+int specialchars(char *str);
 char **envtokenizer(char *name);
 void terminated(char *str, char *str1);
 int execute(char *str, char **argv);

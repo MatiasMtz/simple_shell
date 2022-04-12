@@ -1,26 +1,26 @@
 #include "main.h"
 /**
- * _getenv - Searches the enviroment list to find the enviroment variable name.
- * @env: Name of the enviroment variable.
+ * _getenv - Searches for the desired env variable into the environ list.
+ * @env: Name of the enviroment variable you want to get.
  * Return: Returns the tokenized environment variable.
  */
 char **_getenv(char *env)
 {
-	int a = 0;
-	int b = 0;
+	int len = 0;
+	int height = 0;
 	char *name = NULL;
 
-	for (b = 0; environ[b] != NULL; b++)
+	for (len = 0; environ[len] != NULL; len++)
 	{
-		for (a = 0; environ[b][a] != '='; a++)
+		for (height = 0; environ[len][height] != '='; height++)
 		{
-			if (environ[b][a] != env[a])
+			if (environ[len][height] != env[height])
 				break;
-			if (environ[b][a] == env[a])
+			if (environ[len][height] == env[height])
 			{
-				if (env[a + 1] == '\0' && environ[b][a + 1] == '=')
+				if (env[height + 1] == '\0' && environ[len][height + 1] == '=')
 				{
-					name = _strdup(&(environ[b][a + 2]));
+					name = _strdup(&(environ[len][height + 2]));
 					return (envtokenizer(name));
 				}
 			}
@@ -30,9 +30,9 @@ char **_getenv(char *env)
 }
 
 /**
- * envtokenizer - Tokenizes enviroment variables.
+ * envtokenizer - Tokenizes env variables.
  * @name: The full PATH seperated by :'s.
- * Return: An array of strings
+ * Return: A 2d array of strings.
 **/
 char **envtokenizer(char *name)
 {
