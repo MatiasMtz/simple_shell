@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * execute - Function that creates chil processes and executes commands.
- * @str: Absolute command path.
- * @argv: user tokenized input to execute.
- * Return: 0 when error..
+ * execute - Function that creates children and executes commands.
+ * @str: Full command path.
+ * @argv: Array of arguments to execute.
+ * Return: 0.
  */
 int execute(char *str, char **argv)
 {

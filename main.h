@@ -11,12 +11,13 @@
 #include <time.h>
 #include <errno.h>
 #include <signal.h>
+#include <libgen.h>
 
 extern char **environ;
 int wc(char *string, const char *delim);
 char **tokenizer(char *string, const char *delim);
 char **_getenv(char *env);
-int specialchars(char *str);
+int characters(char *str);
 char **envtokenizer(char *name);
 void terminated(char *str, char *str1);
 int execute(char *str, char **argv);

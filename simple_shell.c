@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * main - Simple shell.
- * Return: 0 when exiting;
+ * Return: 0;
  */
 int main(void)
 {
@@ -22,7 +22,7 @@ int main(void)
 			free(string);
 			return (0);
 		}
-		if (specialchars(string) == -1)
+		if (characters(string) == -1)
 			continue;
 		terminated(string, "exit\n");
 		if (_env(string) == 0)

@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * check_and_execute - Function to check if file exists and execute it.
+ * check_and_execute - Function to check if file exists and execute.
  * @string: User input.
  * Return: 0 when executing or error found.
  */
@@ -48,9 +48,6 @@ int check_and_execute(char *string)
 }
 
 /**
- * file_check - checks for files in parent and working directories.
- * @token: User tokenized input.
- * Return: 0 if executed, -1 if error.
  */
 int file_check(char **token)
 {
@@ -78,9 +75,10 @@ int file_check(char **token)
 }
 
 /**
- * _which - Looks if a file exist in the PATH env variable.
- * @tknstring: User tokenized input.
- * Return: Return the absolute path of the program or NULL if error.
+ * _which - Looks if a file exist
+ *  them with the $PATH looking for a match.
+ * @tknstring: Array of arguments.
+ * Return: Return the complete path of the executables.
  */
 char *_which(char **tknstring)
 {

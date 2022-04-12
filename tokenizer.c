@@ -2,8 +2,8 @@
 /**
  * wc - Word counting function.
  * @string: String to be tokenized.
- * @delim: Tokenization delimiter.
- * Return: Returns how many words are in *string..
+ * @delim: Delimiter.
+ * Return: Returns the number of words.
 */
 int wc(char *string, const char *delim)
 {
@@ -27,11 +27,11 @@ int wc(char *string, const char *delim)
 }
 
 /**
- * tokenizer - Function that breaks a string into a
+ * tokenizer - Function breaks a string into a
  * sequence of zero or more nonempty tokens.
  * @string: String to be tokenized.
- * @delim: Tokenization delimiter.
- * Return: Null if it fails or pointer to a 2d array.
+ * @delim: Delimiter.
+ * Return: Null if it fails or pointer to the next token.
  */
 char **tokenizer(char *string, const char *delim)
 {

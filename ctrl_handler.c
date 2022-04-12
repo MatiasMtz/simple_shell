@@ -1,7 +1,7 @@
 #include "main.h"
 /**
- * ctrl_handler - prints the PS1 to continue entering commands after Ctrl+C.
- * @signum: unused arg.
+ * ctrl_handler - completar
+ * @signum: completar
  */
 void ctrl_handler(__attribute__((unused))int signum)
 {

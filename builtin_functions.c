@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * terminated - exit built-in.
+ * terminated - Exit shell.
  * @str: User input.
- * @str1: Keyword for "exit".
+ * @str1: Keyword for exit.
  */
 void terminated(char *str, char *str1)
 {
@@ -17,9 +17,6 @@ void terminated(char *str, char *str1)
 }
 
 /**
- * _env - env built-in.
- * @str: User input.
- * Return: 1 if the input its the same as "env\n", 0 if not.
  */
 int _env(char *str)
 {
